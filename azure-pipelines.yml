@@ -21,8 +21,10 @@ steps:
     verbose: false
 
 # Replace node-sass with sass compilation
-- script: './node_modules/.bin/node-sass $(wwwrootDir) --output $(wwwrootDir)'
+- script: |
+    npx sass $(wwwrootDir):$(wwwrootDir) --no-source-map --style=compressed
   displayName: 'Compile Sass assets'
+  workingDirectory: $(System.DefaultWorkingDirectory)
 
 - task: gulp@1
   displayName: 'Run gulp tasks'
