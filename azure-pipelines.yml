@@ -19,7 +19,10 @@ steps:
   inputs:
     verbose: false
 
-- script: './node_modules/.bin/node-sass Tailspin.SpaceGame.Web/wwwroot --output Tailspin.SpaceGame.Web/wwwroot'
+# Replace node-sass with sass compilation
+- script: |
+    npm install -g sass
+    sass Tailspin.SpaceGame.Web/wwwroot:Tailspin.SpaceGame.Web/wwwroot --no-source-map --style=compressed
   displayName: 'Compile Sass assets'
 
 - task: gulp@1
